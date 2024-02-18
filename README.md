@@ -52,3 +52,6 @@
 * Create Class for data Tranformation in `src\FlightPricePrediction\components\data_transformation.py`
 * Create Class for Model Traning in `src\FlightPricePrediction\components\model_training.py`
 * Code to Train the Model in `src\FlightPricePrediction\pipelines\training_pipeline.py`
+* PErform Data Transformation in `src\FlightPricePrediction\components\data_transformation.py`
+* Create Code for `utils.py` file in `src\FlightPricePrediction\utils\utils.py`
+* Model training code in `src\FlightPricePrediction\components\model_training.py`

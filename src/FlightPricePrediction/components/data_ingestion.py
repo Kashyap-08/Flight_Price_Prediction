@@ -47,6 +47,11 @@ class DataIngestion:
             test_data.to_csv(test_data_path, index=False)
             logging.info(f"Stored test data in path: {test_data_path}")
 
+            return (
+                train_data_path,
+                test_data_path
+            )
+
 
         except Exception as e:
             logging.info("Exception During the data ingestion process")
