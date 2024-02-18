@@ -27,4 +27,16 @@
 # Create template.py file that create a Framework of the Project
 * Run template.py file using command `python template.py`.
 * It will create all the files and folders that is required for Industry ready project.
+* It is also called as Boiler Plate code, that is universal for any Data Science Project.
 
+# Create Virtual Environment
+* Mention all the required Library in `requirements.txt` file that you want to install.
+* Write a bash code to automatically create Virtiual environment in `init_step.py` file.
+* `init_steup.py` file will create a virtual env using python, it will activate the env and will install all the required libraries mentioned in `requirements.txt` file.
+* Run the Command `bash init_setup.sh` in git bash to run the setup file.
+* it will create virtual env, activate the venv and will install all the requied packages.
+
+# Create a Local Package
+* Create file named `setup.py` and write code to create a package.
+* To install the Local Package add `-e .` in `requirements.txt` file, or you can install package using `python setup.py install`
+* rerun install the package using command `bash init_setup.sh`
