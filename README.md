@@ -40,3 +40,13 @@
 * Create file named `setup.py` and write code to create a package.
 * To install the Local Package add `-e .` in `requirements.txt` file, or you can install package using `python setup.py install`
 * rerun install the package using command `bash init_setup.sh`
+
+# Perform EDA
+* Perfrom EDA in analysis.ipynb notebook.
+* Also Try experimenting with different algorithm find the best model.
+
+# Process of Modular Coding
+* Create Class for data Ingestion in `src\FlightPricePrediction\components\data_ingestion.py`
+* Create Class for data Tranformation in `src\FlightPricePrediction\components\data_transformation.py`
+* Create Class for Model Traning in `src\FlightPricePrediction\components\model_training.py`
+* Write code to log all the information in `src\FlightPricePrediction\logger.py`
