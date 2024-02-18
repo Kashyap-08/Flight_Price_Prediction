@@ -50,3 +50,4 @@
 * Create Class for data Tranformation in `src\FlightPricePrediction\components\data_transformation.py`
 * Create Class for Model Traning in `src\FlightPricePrediction\components\model_training.py`
 * Write code to log all the information in `src\FlightPricePrediction\logger.py`
+* COde to handle Exception. Create a custom exceptio class `src\FlightPricePrediction\exception.py`
