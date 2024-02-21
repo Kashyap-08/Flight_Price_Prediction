@@ -1,10 +1,12 @@
 import pandas as pd
 import os 
 import sys
+import numpy as np
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
 
 from src.FlightPricePrediction.exception import CustomException
@@ -23,7 +25,7 @@ class DataTransformation:
             logging.info("Initialize Data Transformation")
 
             categorical_col = ['airline', 'flight', 'source_city', 'departure_time', 'stops','arrival_time', 'destination_city', 'class']
-            numericla_col = ['duration', 'days_left', 'price']
+            numericla_col = ['duration', 'days_left']
 
             logging.info("Pipeline Initiated")
 
@@ -36,8 +38,9 @@ class DataTransformation:
             # Categorical Pipeline
             cat_pipeline = Pipeline(
                 steps=[
-                    ('imputer', SimpleImputer(strategy='most_frequent'))
-                ]
+                    ('imputer', SimpleImputer(strategy='most_frequent')),
+                    ('onehot_encoding', OneHotEncoder(handle_unknown='ignore'))
+                ]   
             )
 
             preprocess = ColumnTransformer([
@@ -79,6 +82,26 @@ class DataTransformation:
             save_object(
                 file_path=self.data_transformation_config.preprocessor_obj_file_path,
                 obj = preprocess_obj
+            )
+
+            logging.info("Preprocessor Pickel file stored")
+
+            # # Use numpy.c_ to concatenate them horizontally
+            # logging.info("Concate the transform data and target data")
+            # target_arr = np.c_[train_input_feature_arr, np.array(target_train_feature)]
+            # test_arr = np.c_[test_input_feature_arr, np.array(target_test_feature)]
+
+            # logging.info("Retunr created train test arrays")
+            # return (
+            #     target_arr,
+            #     test_arr
+            # )
+
+            return(
+                train_input_feature_arr, 
+                np.array(target_train_feature),
+                test_input_feature_arr,
+                np.array(target_test_feature)
             )
             
 

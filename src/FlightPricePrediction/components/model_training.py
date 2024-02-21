@@ -17,16 +17,17 @@ class ModelTraner:
     def __init__(self):
         self.model_training_config = ModelTrainingConfig()
 
-    def initiate_model_traner(train_array, test_array):
+    # def initiate_model_traner(self, train_array, test_array):
+    def initiate_model_traner(self, X_train, y_train, X_test, y_test):
         try:
             logging.info('Spliting Dependent and Independent variables from train and test data')
 
-            X_train, y_train, X_test, y_test = (
-                train_array[:, :-1],
-                train_array[:,-1],
-                test_array[:, :-1],
-                test_array[:,-1]
-            )
+            # X_train, y_train, X_test, y_test = (
+            #    train_array[:, :-1],
+            #    train_array[:,-1],
+            #    test_array[:, :-1],
+            #    test_array[:,-1]
+            # )
 
             models = {
                 'LinearRegression': LinearRegression(),

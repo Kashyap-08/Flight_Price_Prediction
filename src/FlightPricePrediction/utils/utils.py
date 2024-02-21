@@ -15,7 +15,7 @@ def save_object(file_path, obj):
 
         logging.info('Directory Created')
 
-        with open(dir_path, 'wb') as file_obj:
+        with open(file_path, 'wb') as file_obj:
             pickle.dump(obj, file_obj)
 
         logging.info(f"Dumped Object in filepath: {file_path}")
