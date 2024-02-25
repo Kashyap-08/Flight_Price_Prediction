@@ -7,6 +7,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.decomposition import PCA
 
 
 from src.FlightPricePrediction.exception import CustomException
@@ -31,16 +32,16 @@ class DataTransformation:
 
             # Numerical Pipeline
             num_pipeline = Pipeline(
-                steps=[('imputer', SimpleImputer(strategy='median')),
+                steps=[
                        ('scaler', StandardScaler())
                        ])
             
             # Categorical Pipeline
             cat_pipeline = Pipeline(
                 steps=[
-                    ('imputer', SimpleImputer(strategy='most_frequent')),
-                    ('onehot_encoding', OneHotEncoder(handle_unknown='ignore'))
-                ]   
+                    ('onehot_encoding', OneHotEncoder(handle_unknown='ignore')),
+                    ('pca', PCA(n_components=8, svd_solver='arpack'))
+                ]
             )
 
             preprocess = ColumnTransformer([

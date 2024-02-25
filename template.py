@@ -21,7 +21,10 @@ list_of_files = [
     "notebooks/analysis.ipynb",
     "requirements.txt",
     "setup.py",
-    "init_setup.sh"
+    "init_setup.sh",
+    "app.py",
+    "templates/index.html",
+    "templates/form.html"
 ]
 
 # Here will create a directory

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Details Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="diamondForm" action="{{ url_for('predict') }}" method="POST">
+
+        <label for="airline">Airline:</label>
+        <select id="airline" name="airline">
+            <option value="SpiceJet">SpiceJet</option>
+            <option value="AirAsia">AirAsia</option>
+            <option value="Vistara">Vistara</option>
+            <option value="GO_FIRST">GO_FIRST</option>
+            <option value="Indigo">Indigo</option>
+            <option value="Air_India">Air_India</option>
+        </select>
+
+        <label for="flight">Flight:</label>
+        <input type="text" id="flight" name="flight" placeholder="Enter Flight Name" required>
+
+        <label for="source_city">Sourc City:</label>
+        <input type="text" id="source_city" name="source_city" placeholder="Enter the city you are travelling from" required>
+
+        <label for="departure_time">Departure Time:</label>
+        <select id="departure_time" name="departure_time">
+            <option value="Evening">Evening</option>
+            <option value="Early_Morning">Early_Morning</option>
+            <option value="Morning">Morning</option>
+            <option value="Afternoon">Afternoon</option>
+            <option value="Night">Night</option>
+            <option value="Late_Night">Late_Night</option>
+        </select>
+
+        <label for="stops">Stops:</label>
+        <select id="stops" name="stops">
+            <option value="zero">zero</option>
+            <option value="one">one</option>
+            <option value="two_or_more">two_or_more</option>
+        </select>
+
+        <label for="arrival_time">Arrival Time:</label>
+        <select id="arrival_time" name="arrival_time">
+            <option value="Evening">Evening</option>
+            <option value="Early_Morning">Early_Morning</option>
+            <option value="Morning">Morning</option>
+            <option value="Afternoon">Afternoon</option>
+            <option value="Night">Night</option>
+            <option value="Late_Night">Late_Night</option>
+        </select>
+
+        <label for="destination_city">Destination City:</label>
+        <input type="text" id="destination_city" name="destination_city" placeholder="Enter the city you are travelling to" required>
+
+        <label for="class">Class:</label>
+        <select id="class" name="class">
+            <option value="Economy">Economy</option>
+            <option value="Business">Business</option>
+        </select>
+
+        <label for="duration">Duration:</label>
+        <input type="text" id="duration" name="duration" placeholder="Enter the duration" required>
+
+        <label for="travel_date">Travel Date:</label>
+        <input type="text" id="travel_date" name="travel_date" placeholder="Enter the date you want to travel on (YYYY-MM_DD)" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+</body>
+</html>

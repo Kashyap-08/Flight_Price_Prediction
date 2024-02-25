@@ -4,6 +4,7 @@ import sys
 from dataclasses import dataclass
 
 from sklearn.linear_model import LinearRegression, Lasso, Ridge, ElasticNet
+from sklearn.ensemble import RandomForestRegressor
 
 from src.FlightPricePrediction.logger import logging
 from src.FlightPricePrediction.exception import CustomException
@@ -29,11 +30,15 @@ class ModelTraner:
             #    test_array[:,-1]
             # )
 
-            models = {
-                'LinearRegression': LinearRegression(),
-                'Lasso': Lasso(),
-                'Ridge': Ridge(),
-                'ElasticNet':ElasticNet()
+            # models = {
+            #     'LinearRegression': LinearRegression(),
+            #     'Lasso': Lasso(),
+            #     'Ridge': Ridge(),
+            #     'ElasticNet':ElasticNet()
+            # }
+
+            models ={
+                'RandomForestRegressor': RandomForestRegressor(n_estimators =  1200, min_samples_split = 2, min_samples_leaf = 1, max_features = 'log2', max_depth = 110, bootstrap = True)
             }
 
             model_report:dict = evaluate_model(X_train, y_train, X_test, y_test, models)
@@ -45,7 +50,7 @@ class ModelTraner:
             best_model_name = list(model_report.keys())[list(model_report.values()).index(best_model_score)]
 
             best_model = models[best_model_name]
-
+            print("\n =========================================================== \n")
             print(f"Best model found, Model Name: {best_model_name}, R2_Score: {best_model_score}")
             print("\n =========================================================== \n")
             logging.info(f"Best model found, Model Name: {best_model_name}, R2_Score: {best_model_score}")
@@ -55,6 +60,7 @@ class ModelTraner:
                 obj = best_model
             )
 
+            logging.info('Trained Object Saved Successfully.')
         except Exception as e:
             logging.info('Exception in initiate_model_trainer() method')
             raise CustomException(e, sys)
